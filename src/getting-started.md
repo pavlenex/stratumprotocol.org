@@ -77,21 +77,31 @@ Depending on mining device you do run, you may have to adjust `tproxy-config-loc
 
 Download a release from Sjors' fork of Bitcoin Core from https://github.com/Sjors/bitcoin/releases
 
-Edit the `bitcoin.conf` file by adding:
+Edit the `bitcoin.conf` file stored in `~/.bitcoin/` by adding:
 ```bash
+[testnet4]
 server=1
 rpcuser=username
 rpcpassword=password
 ```
-Run the Template provider:
+
+Unpack the Template Provider. For example, assuming you downloaded `bitcoin-sv2-tp-0.1.15-x86_64-linux-gnu.tar.gz`:
 
 ```bash
-./bitcoin-sv2-tp-0.1.2/bin/bitcoind -testnet4 -sv2 -sv2port=8442 -debug=sv2 
+tar xvf bitcoin-sv2-tp-0.1.15-x86_64-linux-gnu.tar.gz
+```
+
+⚠️ Note: macOS binaries are not code signed. Read release notes for instructions on how to proceed.
+
+Start the Template Provider.
+
+```bash
+./bitcoin-sv2-tp-0.1.15/bin/bitcoind -testnet4 -sv2 -sv2port=8442 -debug=sv2 
 ```
 
 ⚠️ Note: you need to wait until `bitcoind` is fully synced with the testnet before you proceed.
 
-Optional paremeters:
+Optional parameters:
 
 There are optional parameters which can be used to better manage the Template Provider:
 - `sv2interval` - sets how often a new template is built (default is 30s)
@@ -101,7 +111,7 @@ There are optional parameters which can be used to better manage the Template Pr
 For example: 
 
 ```bash
-./bitcoin-sv2-tp-0.1.2/bin/bitcoind -sv2 -sv2port=8442 -sv2interval=20 -sv2feedelta=1000 -debug=sv2 -loglevel=sv2:trace
+./bitcoin-sv2-tp-0.1.15/bin/bitcoind -testnet4 -sv2 -sv2port=8442 -sv2interval=20 -sv2feedelta=1000 -debug=sv2 -loglevel=sv2:trace
 ```
 This way new templates are constructed every 20 seconds (taking the most profitable txs from the mempool) and they are sent downstream if new fees collected are more than 1000 sats. 
 

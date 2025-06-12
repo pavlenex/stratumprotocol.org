@@ -1,8 +1,18 @@
+---
+title: "How Stratum V2 Increases Mining Profitability"
+description: "We are thrilled to announce the launch of SRI 1.0.0! This marks an important milestone in our mission to decentralize and enhance bitcoin mining and stands ready for immediate testing and integration."
+date: "2025-06-12"
+authors:
+  - Pavlenex
+tags:
+  - Case-study
+  - Research
+---
 # How Stratum V2 Increases Mining Profitability
 
 **This case study compares two Bitcoin mining protocols, Stratum V1 and V2 , and demonstrates how the combined technical improvements of Stratum V2 translate into a substantial profitability increase for miners.**
 
-## In bitcoin mining, a millisecond can determine whether a miner successfully earns the block reward or loses out to a competitor. At the core of this race lies the **mining protocol** that connects miners, pools, and the network, with the goal of ensuring effective communication between participants.
+In bitcoin mining, a millisecond can determine whether a miner successfully earns the block reward or loses out to a competitor. At the core of this race lies the **mining protocol** that connects miners, pools, and the network, with the goal of ensuring effective communication between participants.
 
 For over a decade, **Stratum V1 (SV1)** has served as the industry standard mining protocol, but as mining competition has intensified over the years, the need for technical improvements on the protocol-side has become apparent. While we have seen massive technical improvements on the mining hardware side over the past decade, miners have been stuck with a less than optimal protocol.
 
@@ -13,7 +23,7 @@ This is why we have developed **Stratum V2 (SV2)**, the successor to SV1. This p
 The primary objective of the case study is to evaluate if SV2 improves mining efficiency and profitability compared to SV1. This is achieved by measuring the following **key performance indicators** and evaluating their impact on net profitability:
 
 * Share Submission  
-* Latency**:**  
+* Latency: 
   * Block Change  
   * Job Latency  
   * Block Propagation  
@@ -30,7 +40,7 @@ This study was conducted at [Hashlabs](https://www.hashlabs.io) using two identi
 
 However, not all stale shares are caused by inefficiencies. On average, about 2% of stale shares are rejected for expected reasons, such as not meeting the pool’s minimum difficulty. This 2% rejection rate is considered an industry standard. The remaining 98% are preventable and caused by avoidable delays. Reducing these avoidable stale shares improves mining efficiency and increases profitability.
 
-![][image1]
+![](/assets/case-study/hashlabs/share-acceptance.png)
 
 Our benchmark data shows that miners using **Stratum V1** waste between **0.1% and 0.2%** of their hashing power submitting shares that do not result in payouts. Switching to **Stratum V2 without Job Declaration** reduces this inefficiency to around 0.08%, while using **Stratum V2 with Job Declaration** eliminates it nearly entirely, assuming miner and pool node have the same level of connectivity.
 
@@ -40,7 +50,7 @@ By connecting directly to a local **Job Declaration Client ([JDC](https://stratu
 
 Our tests used only a single SV1 connected to the tProxy. We anticipate that Stratum V2's advantage would increase further with multiple downstream connections. In fact, a separate test conducted using CPU miners demonstrated an additional **0.4% improvement** in favor of Stratum V2, as shown in the chart below.
 
-![][image2]
+![](/assets/case-study/hashlabs/share-acceptance-2.png)
 
 ### **Latency**
 
@@ -48,19 +58,19 @@ Our benchmarks demonstrate **substantial latency improvements** using Stratum V2
 
 To further contextualize these results, we measured the network latency to various production pool endpoints during the benchmark sessions. The average round-trip time (RTT) observed across four reports was approximately 110ms. This value was used internally within the tool infrastructure to simulate realistic network conditions during the benchmarks.
 
-![][image3]
+![](/assets/case-study/hashlabs/latency-all.png)
 
 #### **Block Change latency**
 
 **Block Change Latency** is a delay experienced when **switching to a new job after a block is found on the network**. During this brief period, miners continue working on outdated job templates that will not be rewarded, resulting in entirely wasted hash power. Reducing this latency directly improves profitability.
 
-![][image4]
+![](/assets/case-study/hashlabs/block-change-latency.png)
 
 According to our benchmarking data, **Stratum V2 with Job Declaration (JD)** reduces block change latency from **325 ms (SV1)** to just **1.42 ms**, a difference of **323.58 ms**, making it over **228 times faster**. Even without JD, **SV2 still improves latency**, reducing it to **57.8 ms**, about **5.6 times faster** than SV1.
 
 SV1 miners lose approximately **323.58 milliseconds per block** due to block change latency compared to SV2 with JD. Over a year, this adds up to around **4.9 hours** of completely wasted hashing time. To quantify the efficiency gain of switching to SV2 with JD, we compare this latency difference to the total block interval of **600,000 milliseconds** (10 minutes):
 
-![][image5]
+![](/assets/case-study/hashlabs/efficiency-gain.png)
 
 For miners operating on a **10% profit margin**, this translates to a **net profit increase of approximately 0.54%** by switching from SV1 to **SV2 with Job Declaration**. Since block change latency directly causes shares to become stale and rejected, its impact is already captured in our share acceptance rate.
 
@@ -70,35 +80,33 @@ For miners operating on a **10% profit margin**, this translates to a **net prof
 
 During the delay, miners may continue working on valid job templates that do not include the most recent transactions, potentially reducing the fee revenue earned per block.
 
-![][image6]
+![](/assets/case-study/hashlabs/job-latency.png)
 
 According to our benchmarking data, **Stratum V2 with Job Declaration (JD)** reduces job latency from **228 ms (SV1)** to just **2.44 ms**, a difference of **225.54 ms**, making it over **93 times faster**. Even without JD, **SV2 still improves latency**, reducing it to **57.8 ms**, about **4 times faster** than SV1.
 
 To quantify this, a time-based fee growth model was applied to a dataset of 53,154 Bitcoin blocks spanning approximately one year. The assumption is that transaction fees accumulate linearly across the 600-second block interval, and that job templates are refreshed 20 times per block (every 30 seconds). Given the latency difference between SV1 (0.228 seconds) and SV2 with JD (0.00244 seconds), and a fee growth rate of **0.00031443 BTC per second**, the cumulative fee loss per block is modeled as:
 
-![][image7]
+![](/assets/case-study/hashlabs/block-loss.png)
 
 The average transaction fee per block, based on a total of 10,027.81 BTC in fees across the dataset of 53,154 blocks, is **0.18866 BTC**. The opportunity cost per block for SV1 miners is:
 
-![][image8]
+![](/assets/case-study/hashlabs/oportunity-cost.png)
 
 **This means SV1 miners lose approximately 0.75% of potential transaction fee revenue on every block** simply due to job latency. Over thousands of blocks, this adds up to a significant long-term loss.
+
+While this 0.75% figure reflects the percentage of fee revenue lost per block, it does not represent a gain relative to the entire block reward. When accounting for both the transaction fees (0.18866 BTC) and the block subsidy (3.125 BTC), the total block reward is approximately 3.31366 BTC. The 0.00141 BTC gain from reduced job latency therefore corresponds to a 0.04% increase in total block revenue. For miners operating on a 10% profit margin, this translates into a **0.4% net profit boost**. 
 
 Even when comparing SV2 without JD to SV2 with JD, the latency difference of 55.3 milliseconds results in a cumulative block loss of **0.000347 BTC**, translating into an opportunity cost of approximately **0.18%** per block. 
 
 In both cases, reducing job latency increases profitability by ensuring miners are working on the most up-to-date block templates with the highest fee density.
 
-![][image9]
+![](/assets/case-study/hashlabs/job-latency-table.png)
 
 **Switching to SV2 with Job Declaration potentially unlocks up to 74 BTC in additional transaction fee revenue per year** across the entire Bitcoin network, simply by reducing job latency.
 
 This figure comes from multiplying the average opportunity cost per block (0.00141 BTC) by the number of blocks mined annually (52,560), which gives:
 
-![][image10]
-
-At a Bitcoin price of **$110,000**, this translates to:
-
-![][image11]
+![](/assets/case-study/hashlabs/job-latency-2.png)
 
 At a BTC price of $110,000, this translates to more than **8.17 million USD in extra revenue** that miners could collectively capture by switching to SV2 with JD. 
 
@@ -108,7 +116,7 @@ As transaction fees are expected to become a larger portion of miner income over
 
 **Block Propagation Latency** measures the time it takes for a newly mined block to be broadcasted and accepted by the Bitcoin network. Faster propagation improves profitability by increasing the [likelihood](https://bitcoin.stackexchange.com/questions/126019/up-to-date-statistics-about-chain-reorganizations) that a miner’s block is accepted first, especially during chain-split races. 
 
-![][image12]
+![](/assets/case-study/hashlabs/block-propagation.png)
 
 SV2 with Job Declaration reduces block propagation time from **96.3 milliseconds (SV1)** to just **3.44 milliseconds**, making block propagation faster. The major improvement in block propagation speed with Stratum V2 results primarily from its architectural design. Stratum V2 enables **dual block propagation**. A block can be propagated from the miner-side Job Declaration Client (JDC) in addition to the server-side Job Declaration Server (JDS), hosted by the mining pool. Conversely, Stratum V1 only propagates blocks from the pool-side server, leading to higher propagation delays.
 
@@ -126,7 +134,14 @@ By reducing latency, optimizing share submissions, and improving security, **Str
 
 Additional profitability gains from transparency improvements, such as preventing pools from secretly withholding hashrate or obscuring true fees, are outside the scope of this research but merit further investigation.
 
-![][image13]
+| KPI / Improvement                   | Type                             | Net Profit Gain       |
+| ----------------------------------- | -------------------------------- | --------------------- |
+| **Reduced stale shares**            | Measured efficiency gain         | **+2.0%**             |
+| **Fee gain from lower job latency** | Modeled, margin-adjusted gain    | **+0.4%**             |
+| **Hashrate hijacking protection**   | Industry-estimated security gain | **+5.0%**             |
+| **Block change latency**            | Included in stale share impact   | *(not counted twice)* |
+| **Block propagation**               | Latency improvement, not modeled | *(unmeasured)*        |
+| **Total estimated net profit gain** |                                  | **up to 7.4%**        |
 
 Beyond efficiency and profitability, Stratum V2 strengthens **security** through end-to-end encryption, **eliminating hashrate hijacking**, and empowering miners to **construct their own block templates** helping preserve Bitcoin’s core principles of security, decentralization and censorship resistance.
 
@@ -148,7 +163,7 @@ Alejandro De La Torre, Alen Mahmetov, Filippo Merli, Francisco Quadrio Monteiro,
 
 ## Appendix A: Benchmarking Setup and Methodology
 
-### **This appendix outlines the complete setup, configurations, tools, and assumptions used in the SV2 vs SV1 benchmarking process.**
+**This appendix outlines the complete setup, configurations, tools, and assumptions used in the SV2 vs SV1 benchmarking process.**
 
 The benchmarking was conducted at Hashlabs facilities using two identical hardware devices **ASIC S19k Pro 120Th**, running stock firmware (MD5:a859d95a7110b29b0b70e3e681a5aa2c 2024-04-12) each configured to run separately on SV1 and SV2. The tests were performed under controlled conditions on the Bitcoin mainnet network and Testnet 4 (for measuring block propagation speed) using an [open-source benchmarking tool.](https://github.com/stratum-mining/benchmarking-tool) It is important to note that the **benchmarking tool** is in its alpha stage, and there is room for improvement for both SV1 and SV2 stacks.
 

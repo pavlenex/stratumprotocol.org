@@ -455,6 +455,7 @@ function initSupporterTabs() {
     { name: "Braiins", logo: "/assets/logos/braiins-logo.svg", width: 240, height: 87, website: "https://braiins.com/", categories: ["workingGroup"] },
     { name: "Btrust", logo: "/assets/logos/btrust.svg", width: 753, height: 319, website: "https://www.btrust.tech/", categories: ["funder"] },
     { name: "DMND", logo: "/assets/logos/demand-logo.svg", width: 612, height: 258, website: "https://www.dmnd.work/", categories: ["workingGroup"] },
+    { name: "F2Pool", logo: "/assets/logos/f2pool-logo.svg", width: 240, height: 87, website: "https://www.f2pool.com/", categories: ["workingGroup"] },
     { name: "Foundry", logo: "/assets/logos/foundry-logo.svg", width: 231, height: 74, website: "https://foundrydigital.com/", categories: ["workingGroup", "pastFunder"] },
     { name: "Galaxy", logo: "/assets/logos/galaxy-logo.svg", width: 231, height: 111, website: "https://www.galaxy.com/", categories: ["pastFunder"] },
     { name: "HRF", logo: "/assets/logos/hrf-logo.svg", width: 269, height: 75, website: "https://hrf.org/", categories: ["funder"] },
@@ -517,6 +518,7 @@ function initSupporterTabs() {
     const isFunder = tabId === 'funder';
 
     grid.innerHTML = '';
+    grid.classList.toggle('working-group', isWorkingGroup);
 
     if (isFunder) {
       const current = filtered.filter(s => s.categories.includes('funder'));

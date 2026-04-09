@@ -2129,12 +2129,11 @@ body.mobile-menu-open .navbar-container {
 }
 
 .interoperability-logos {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  justify-content: center;
   align-items: center;
-  max-width: 500px;
+  justify-items: center;
 }
 
 /* Interoperability logos display in full color */
@@ -3680,6 +3679,13 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
   margin: 0 auto;
   min-height: 150px;
   animation: fadeIn 0.3s ease-out;
+}
+
+.supporters-grid.working-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  max-width: 36rem;
 }
 
 /* Respect reduced-motion and avoid CPU/GPU-heavy transitions/animations. */

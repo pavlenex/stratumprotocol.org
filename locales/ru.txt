@@ -232,6 +232,7 @@ supporters.tab.workinggroup = Рабочая группа
 supporters.currentFunders = Текущие спонсоры
 supporters.pastFunders = Бывшие спонсоры
 supporters.visitWebsite = Перейти на сайт {name}
+supporters.logo.antpool = Перейти на сайт Antpool
 supporters.logo.auradine = Перейти на сайт Auradine
 supporters.logo.block = Перейти на сайт Block
 supporters.logo.braiins = Перейти на сайт Braiins

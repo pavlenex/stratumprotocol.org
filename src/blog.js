@@ -31,6 +31,7 @@ function getSlugFromURL() {
 // Blog post registry
 // To add a new post: add the slug to this array and drop the .md file in content/blog/
 const BLOG_POSTS = [
+  'new-members',
   'sri-roadmap-2026',
   'hashlabs',
   'sri-roadmap-2025',

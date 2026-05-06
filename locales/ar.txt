@@ -232,6 +232,7 @@ supporters.tab.workinggroup = مجموعة العمل
 supporters.currentFunders = الممولون الحاليون
 supporters.pastFunders = الممولون السابقون
 supporters.visitWebsite = اذهب إلى موقع {name}
+supporters.logo.antpool = اذهب إلى موقع Antpool
 supporters.logo.auradine = اذهب إلى موقع Auradine
 supporters.logo.block = اذهب إلى موقع Block
 supporters.logo.braiins = اذهب إلى موقع Braiins

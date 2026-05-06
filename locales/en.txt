@@ -233,6 +233,7 @@ supporters.tab.workinggroup = Working Group
 supporters.currentFunders = Current Funders
 supporters.pastFunders = Past Funders
 supporters.visitWebsite = Visit {name} website
+supporters.logo.antpool = Visit Antpool website
 supporters.logo.auradine = Visit Auradine website
 supporters.logo.block = Visit Block website
 supporters.logo.braiins = Visit Braiins website

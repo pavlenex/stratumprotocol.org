@@ -1,6 +1,6 @@
 ---
-title: "Welcoming Antpool, Block, DMND, F2Pool, Foundry, MARA Foundation and SpiderPool to the Stratum V2 Working Group"
-description: "Antpool, Block, DMND, F2Pool, Foundry, MARA Foundation, SpiderPool join the Stratum V2 Working Group to help advance an open Bitcoin mining standard."
+title: "Welcoming ANTPOOL, Block, DMND, F2Pool, Foundry, MARA Foundation and SpiderPool to the Stratum V2 Working Group"
+description: "ANTPOOL, Block, DMND, F2Pool, Foundry, MARA Foundation, SpiderPool join the Stratum V2 Working Group to help advance an open Bitcoin mining standard."
 date: "2026-05-07"
 authors:
   - Pavlenex
@@ -12,7 +12,7 @@ tags:
 
 ![Stratum V2 Working Group members](/assets/images/blog/working-group-new-members.png)
 
-Today marks an important step forward for the Stratum V2 Working Group as [Antpool](https://www.antpool.com), [Block, Inc.](https://block.xyz), [F2Pool](https://www.f2pool.com), [Foundry](https://foundrydigital.com), [MARA Foundation](https://foundation.mara.com), [SpiderPool](https://www.spiderpool.com), and [DMND](https://www.dmnd.work) join the effort to advance an open Bitcoin mining standard.
+Today marks an important step forward for the Stratum V2 Working Group as [ANTPOOL](https://www.antpool.com), [Block, Inc.](https://block.xyz), [F2Pool](https://www.f2pool.com), [Foundry](https://foundrydigital.com), [MARA Foundation](https://foundation.mara.com), [SpiderPool](https://www.spiderpool.com), and [DMND](https://www.dmnd.work) join the effort to advance an open Bitcoin mining standard.
 
 Bitcoin mining is competitive and fragmented by design. It is a race for efficiency where a millisecond can determine whether a miner wins a block or loses to a competitor.
 

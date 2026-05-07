@@ -238,6 +238,7 @@ supporters.logo.block = Visitar el sitio web de Block
 supporters.logo.braiins = Visitar el sitio web de Braiins
 supporters.logo.dmnd = Visitar el sitio web de DMND
 supporters.logo.foundry = Visitar el sitio web de Foundry
+supporters.logo.mara = Visitar el sitio web de MARA Foundation
 supporters.logo.spiderpool = Visitar el sitio web de Spiderpool
 supporters.logo.spiral = Visitar el sitio web de Spiral
 

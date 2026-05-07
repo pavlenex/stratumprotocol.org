@@ -3861,6 +3861,31 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
   transition: filter 0.3s, opacity 0.3s;
 }
 
+.supporter-logo-lockup {
+  gap: 0.45rem;
+  padding: 0.85rem;
+}
+
+.supporter-logo-lockup img {
+  width: auto;
+  height: 2rem;
+  max-width: 2.1rem;
+  max-height: 2.1rem;
+  flex: 0 0 auto;
+}
+
+.supporter-logo-label {
+  color: #18191c;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: color 0.3s;
+}
+
+.dark .supporter-logo-label {
+  color: #ffffff;
+}
+
 /* Invert logos for light mode */
 :root:not(.dark) .supporter-logo img {
   filter: invert(1) hue-rotate(180deg);
@@ -3896,6 +3921,14 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
 :root:not(.dark) .supporter-logo .antpool-for-light { display: block; filter: none; }
 .dark .supporter-logo .antpool-for-light             { display: none; }
 .dark .supporter-logo .antpool-for-dark              { filter: none; }
+
+/* MARA Foundation: manual dark/light swap, bypass global invert filter */
+.marafoundation-for-dark  { display: block; }
+.marafoundation-for-light { display: none;  }
+:root:not(.dark) .supporter-logo .marafoundation-for-dark  { display: none;  filter: none; }
+:root:not(.dark) .supporter-logo .marafoundation-for-light { display: block; filter: none; }
+.dark .supporter-logo .marafoundation-for-light             { display: none; }
+.dark .supporter-logo .marafoundation-for-dark              { filter: none; }
 
 /* Spiderpool: manual dark/light swap, bypass global invert filter */
 .spiderpool-for-dark  { display: block; }

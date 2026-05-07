@@ -469,9 +469,10 @@ function initSupporterTabs() {
     { name: "Galaxy", logo: "/assets/logos/galaxy-logo.svg", width: 231, height: 111, website: "https://www.galaxy.com/", categories: ["pastFunder"] },
     { name: "HRF", logo: "/assets/logos/hrf-logo.svg", width: 269, height: 75, website: "https://hrf.org/", categories: ["funder"] },
     { name: "Hut8", logo: "/assets/logos/hut-logo.svg", width: 208, height: 94, website: "https://www.hut8.com/", categories: ["pastFunder"] },
+    { name: "MARA Foundation", logoVariants: { dark: "/assets/logos/mara-foundation-logo-dark.svg", light: "/assets/logos/mara-foundation-logo-light.svg" }, width: 240, height: 71, website: "https://foundation.mara.com/", categories: ["workingGroup"] },
     { name: "OpenSats", logo: "/assets/logos/opensats-logo.svg", width: 269, height: 39, website: "https://opensats.org/", categories: ["funder"] },
     { name: "Spiderpool", logoVariants: { dark: "/assets/logos/spiderpool-logo-dark.svg", light: "/assets/logos/spiderpool-logo-light.svg" }, width: 540, height: 135, website: "https://www.spiderpool.com/", categories: ["workingGroup"] },
-    { name: "Spiral", logo: "/assets/logos/spiral-logo.svg", width: 122, height: 120, website: "https://spiral.xyz/", categories: ["funder", "workingGroup"] },
+    { name: "Spiral", logo: "/assets/logos/spiral-logo.svg", width: 122, height: 120, website: "https://spiral.xyz/", categories: ["funder", "workingGroup"], logoText: "Spiral" },
     { name: "Summer of Bitcoin", logo: "/assets/logos/summer-of-bitcoin.svg", width: 231, height: 74, website: "https://www.summerofbitcoin.org/", categories: ["pastFunder"] },
     { name: "Vinteum", logo: "/assets/logos/vinteum-logo.png", width: 629, height: 171, website: "https://vinteum.org/", categories: ["funder"] },
   ].sort((a, b) => a.name.localeCompare(b.name));
@@ -500,6 +501,9 @@ function initSupporterTabs() {
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
     link.className = 'supporter-logo';
+    if (supporter.logoText) {
+      link.classList.add('supporter-logo-lockup');
+    }
     const visitWebsiteTemplate = section.getAttribute('data-visit-website-template') || 'Visit {name} website';
     link.setAttribute('aria-label', formatTemplate(visitWebsiteTemplate, { name: supporter.name }));
 
@@ -532,6 +536,12 @@ function initSupporterTabs() {
       if (supporter.height) img.height = supporter.height;
       img.addEventListener('error', () => handleImageError(img, supporter.name));
       link.appendChild(img);
+      if (supporter.logoText) {
+        const span = document.createElement('span');
+        span.className = 'supporter-logo-label';
+        span.textContent = supporter.logoText;
+        link.appendChild(span);
+      }
     } else {
       const span = document.createElement('span');
       span.className = 'text-logo';

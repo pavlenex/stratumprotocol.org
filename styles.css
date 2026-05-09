@@ -3867,43 +3867,17 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
 }
 
 /* Colored logos — skip the invert */
-:root:not(.dark) .supporter-logo img[src*="foundry"],
-:root:not(.dark) .supporter-logo img[src*="spiral"],
-:root:not(.dark) .supporter-logo img[src*="spiderpool"] {
+:root:not(.dark) .supporter-logo img[src*="spiral"] {
   filter: none;
 }
 
-/* F2Pool: manual dark/light swap, bypass global invert filter */
-.f2pool-for-dark  { display: block; }
-.f2pool-for-light { display: none;  }
-:root:not(.dark) .supporter-logo .f2pool-for-dark  { display: none;  filter: none; }
-:root:not(.dark) .supporter-logo .f2pool-for-light { display: block; filter: none; }
-.dark .supporter-logo .f2pool-for-light             { display: none; }
-.dark .supporter-logo .f2pool-for-dark              { filter: none; }
-
-/* Block: manual dark/light swap, bypass global invert filter */
-.block-for-dark  { display: block; }
-.block-for-light { display: none;  }
-:root:not(.dark) .supporter-logo .block-for-dark  { display: none;  filter: none; }
-:root:not(.dark) .supporter-logo .block-for-light { display: block; filter: none; }
-.dark .supporter-logo .block-for-light             { display: none; }
-.dark .supporter-logo .block-for-dark              { filter: none; }
-
-/* Antpool: manual dark/light swap, bypass global invert filter */
-.antpool-for-dark  { display: block; }
-.antpool-for-light { display: none;  }
-:root:not(.dark) .supporter-logo .antpool-for-dark  { display: none;  filter: none; }
-:root:not(.dark) .supporter-logo .antpool-for-light { display: block; filter: none; }
-.dark .supporter-logo .antpool-for-light             { display: none; }
-.dark .supporter-logo .antpool-for-dark              { filter: none; }
-
-/* Spiderpool: manual dark/light swap, bypass global invert filter */
-.spiderpool-for-dark  { display: block; }
-.spiderpool-for-light { display: none;  }
-:root:not(.dark) .supporter-logo .spiderpool-for-dark  { display: none;  filter: none; }
-:root:not(.dark) .supporter-logo .spiderpool-for-light { display: block; filter: none; }
-.dark .supporter-logo .spiderpool-for-light            { display: none; }
-.dark .supporter-logo .spiderpool-for-dark             { filter: none; }
+/* Manual dark/light logo variants bypass the global invert filter. */
+.supporter-logo [class$="-for-dark"] { display: block; }
+.supporter-logo [class$="-for-light"] { display: none; }
+:root:not(.dark) .supporter-logo [class$="-for-dark"] { display: none; filter: none; }
+:root:not(.dark) .supporter-logo [class$="-for-light"] { display: block; filter: none; }
+.dark .supporter-logo [class$="-for-light"] { display: none; }
+.dark .supporter-logo [class$="-for-dark"] { filter: none; }
 
 .dark .supporter-logo img {
   filter: none;

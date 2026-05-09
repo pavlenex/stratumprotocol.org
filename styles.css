@@ -3892,7 +3892,6 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
 }
 
 /* Colored logos — skip the invert */
-:root:not(.dark) .supporter-logo img[src*="foundry"],
 :root:not(.dark) .supporter-logo img[src*="spiral"],
 :root:not(.dark) .supporter-logo img[src*="spiderpool"] {
   filter: none;
@@ -3905,6 +3904,14 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
 :root:not(.dark) .supporter-logo .f2pool-for-light { display: block; filter: none; }
 .dark .supporter-logo .f2pool-for-light             { display: none; }
 .dark .supporter-logo .f2pool-for-dark              { filter: none; }
+
+/* Foundry: manual dark/light swap, bypass global invert filter */
+.foundry-for-dark  { display: block; }
+.foundry-for-light { display: none;  }
+:root:not(.dark) .supporter-logo .foundry-for-dark  { display: none;  filter: none; }
+:root:not(.dark) .supporter-logo .foundry-for-light { display: block; filter: none; }
+.dark .supporter-logo .foundry-for-light            { display: none; }
+.dark .supporter-logo .foundry-for-dark             { filter: none; }
 
 /* Block: manual dark/light swap, bypass global invert filter */
 .block-for-dark  { display: block; }
